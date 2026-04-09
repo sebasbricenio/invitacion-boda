@@ -134,14 +134,6 @@ export default function WeddingInvitation() {
 
           <section className="rsvp">
             <h2>Esperamos contar con tu presencia</h2>
-            <a
-              href={whatsappRsvpUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn-dark"
-            >
-              Confirmar por WhatsApp
-            </a>
           </section>
         </div>
       </div>
