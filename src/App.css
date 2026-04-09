@@ -9,14 +9,12 @@ body {
 }
 
 .page {
-  min-height: 100vh;
-  color: #fff;
   background:
-  linear-gradient(rgba(15,15,20,0.7), rgba(15,15,20,0.9)),
-  url("/fondo.jpg");
-background-size: cover;
-background-position: center;
-  padding: 32px 16px;
+    linear-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.10)),
+    url("/fondo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .container {
@@ -242,12 +240,9 @@ background-position: center;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.10)),
-    url("/fondo.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+
+  background: linear-gradient(135deg, #7edbd1, #5ccfc4);
+
   animation: fadeIn 0.8s ease;
 }
 
@@ -260,17 +255,21 @@ background-position: center;
 .opening-content {
   position: relative;
   z-index: 1;
-  padding: 24px;
-  animation: fadeUp 1s ease;
-  max-width: 700px;
+
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 60px 20px;
 }
 
 .opening-title {
-  margin: 0;
-  font-size: clamp(30px, 5vw, 52px);
-  line-height: 1.15;
-  color: white;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+  margin-top: 20px;
 }
 
 .opening-date {
@@ -281,10 +280,7 @@ background-position: center;
 }
 
 .envelope-button {
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+  margin: auto;
 }
 
 .envelope-button:hover {
