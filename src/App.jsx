@@ -60,7 +60,7 @@ export default function WeddingInvitation() {
   <div className="opening-screen">
     <div className="opening-overlay" />
     <div className="opening-content">
-      <p className="opening-kicker">Boda Sebas & Carla</p>
+
       <h2 className="opening-title">Hay una invitación especial esperándote</h2>
 
       <button className="envelope-button" onClick={openInvitation} aria-label="Abrir invitación">

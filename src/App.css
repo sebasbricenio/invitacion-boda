@@ -243,8 +243,8 @@ background-position: center;
   justify-content: center;
   text-align: center;
   background:
-    linear-gradient(rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.18)),
-    url("/hero.jpg");
+    linear-gradient(rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.10)),
+    url("/fondo.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -265,14 +265,6 @@ background-position: center;
   max-width: 700px;
 }
 
-.opening-kicker {
-  margin: 0 0 10px;
-  font-size: 13px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.95);
-}
-
 .opening-title {
   margin: 0;
   font-size: clamp(30px, 5vw, 52px);
@@ -282,7 +274,7 @@ background-position: center;
 }
 
 .opening-date {
-  margin: 14px 0 28px;
+  margin: 14px 0 50px;
   font-size: 18px;
   color: rgba(255, 255, 255, 0.96);
   text-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
