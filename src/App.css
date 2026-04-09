@@ -243,7 +243,7 @@ background-position: center;
   justify-content: center;
   text-align: center;
   background:
-    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.75)),
+    linear-gradient(rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.18)),
     url("/hero.jpg");
   background-size: cover;
   background-position: center;
@@ -254,7 +254,7 @@ background-position: center;
 .opening-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .opening-content {
@@ -262,17 +262,137 @@ background-position: center;
   z-index: 1;
   padding: 24px;
   animation: fadeUp 1s ease;
+  max-width: 700px;
 }
 
-.opening-content h1 {
-  margin: 0 0 12px;
-  font-size: clamp(48px, 8vw, 90px);
+.opening-kicker {
+  margin: 0 0 10px;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.opening-title {
+  margin: 0;
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1.15;
+  color: white;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
 }
 
 .opening-date {
-  margin: 0 0 24px;
+  margin: 14px 0 28px;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+}
+
+.envelope-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.envelope-button:hover {
+  transform: translateY(-2px);
+}
+
+.envelope {
+  position: relative;
+  width: 220px;
+  height: 150px;
+  margin: 0 auto;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.22));
+}
+
+.envelope-body {
+  position: absolute;
+  inset: 0;
+  background: #f6eadb;
+  border-radius: 0 0 14px 14px;
+  overflow: hidden;
+}
+
+.envelope-body::before,
+.envelope-body::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 100%;
+  background: #ead7c1;
+}
+
+.envelope-body::before {
+  left: 0;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+.envelope-body::after {
+  right: 0;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 92px;
+  background: #efdfcb;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  animation: flapMove 2.2s ease-in-out infinite;
+  z-index: 3;
+}
+
+.envelope-letter {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  transform: translateX(-50%);
+  width: 170px;
+  height: 110px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: letterMove 2.2s ease-in-out infinite;
+}
+
+.envelope-letter span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #3d2d21;
+}
+
+.hidden-audio {
+  display: none;
+}
+
+.mute-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.22);
+  border: none;
+  color: white;
+  font-size: 20px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: transform 0.2s ease;
+}
+
+.mute-button:hover {
+  transform: scale(1.08);
 }
 
 .page-hidden {
@@ -287,15 +407,28 @@ background-position: center;
   transition: opacity 1s ease;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+@keyframes flapMove {
+  0%, 100% {
+    transform: rotateX(0deg);
   }
-  to {
-    opacity: 1;
+  50% {
+    transform: rotateX(55deg);
   }
 }
 
+@keyframes letterMove {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-12px);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 .hidden-audio {
   display: none;
 }

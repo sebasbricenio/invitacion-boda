@@ -57,17 +57,24 @@ export default function WeddingInvitation() {
   return (
     <>
       {!isOpen && (
-        <div className="opening-screen">
-          <div className="opening-overlay" />
-          <div className="opening-content">
-            <h1>Sebas & Carla</h1>
-            <p className="opening-date">02/04/2027 · 18:00 hs</p>
-            <button className="btn btn-light" onClick={openInvitation}>
-              Abrir invitación
-            </button>
+  <div className="opening-screen">
+    <div className="opening-overlay" />
+    <div className="opening-content">
+      <p className="opening-kicker">Boda Sebas & Carla</p>
+      <h2 className="opening-title">Hay una invitación especial esperándote</h2>
+
+      <button className="envelope-button" onClick={openInvitation} aria-label="Abrir invitación">
+        <div className="envelope">
+          <div className="envelope-flap" />
+          <div className="envelope-body" />
+          <div className="envelope-letter">
+            <span>Abrir</span>
           </div>
         </div>
-      )}
+      </button>
+    </div>
+  </div>
+)}
 
       <div className={`page ${isOpen ? "page-visible" : "page-hidden"}`}>
         <div className="container">
