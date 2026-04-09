@@ -295,3 +295,32 @@ background-position: center;
     opacity: 1;
   }
 }
+
+.hidden-audio {
+  display: none;
+}
+
+.mute-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 20px;
+
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+
+  transition: all 0.2s ease;
+}
+
+.mute-button:hover {
+  transform: scale(1.1);
+}

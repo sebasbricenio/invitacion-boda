@@ -19,6 +19,7 @@ export default function WeddingInvitation() {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
   const [isOpen, setIsOpen] = useState(false);
   const audioRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,17 +30,25 @@ export default function WeddingInvitation() {
   }, []);
 
   const openInvitation = async () => {
-    setIsOpen(true);
+  setIsOpen(true);
 
-    try {
-      if (audioRef.current) {
-        audioRef.current.volume = 0.7;
-        await audioRef.current.play();
-      }
-    } catch (error) {
-      console.log("No se pudo reproducir el audio:", error);
+  try {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.7;
+      audioRef.current.muted = false;
+      await audioRef.current.play();
     }
-  };
+  } catch (error) {
+    console.log("No se pudo reproducir el audio:", error);
+  }
+};
+
+const toggleMute = () => {
+  if (audioRef.current) {
+    audioRef.current.muted = !audioRef.current.muted;
+    setIsMuted(audioRef.current.muted);
+  }
+};
 
   const mapUrl = "https://maps.app.goo.gl/RbmLME3SmLiaZjWu7";
   const whatsappRsvpUrl =
@@ -113,9 +122,9 @@ export default function WeddingInvitation() {
           </section>
 
           <div className="music-player">
-            <audio controls loop ref={audioRef}>
-              <source src="/perfect.mp3" type="audio/mpeg" />
-            </audio>
+            <audio loop ref={audioRef} className="hidden-audio">
+  <source src="/perfect.mp3" type="audio/mpeg" />
+</audio>
           </div>
 
           <section className="rsvp">
@@ -132,5 +141,10 @@ export default function WeddingInvitation() {
         </div>
       </div>
     </>
+    {isOpen && (
+  <button className="mute-button" onClick={toggleMute}>
+    {isMuted ? "🔇" : "🔊"}
+  </button>
+)}
   );
 }
