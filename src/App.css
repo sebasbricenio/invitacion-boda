@@ -270,16 +270,25 @@ body {
 
 .opening-title {
   margin-top: 20px;
+  margin: 0;
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1.15;
+  color: white;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
 }
 
 .opening-date {
   margin: 14px 0 50px;
   font-size: 18px;
   color: rgba(255, 255, 255, 0.96);
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+  text-shadow: 0 3px 12px rgb(255, 255, 255);
 }
 
 .envelope-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   margin: auto;
 }
 
