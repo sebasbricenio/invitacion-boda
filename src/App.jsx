@@ -30,25 +30,25 @@ export default function WeddingInvitation() {
   }, []);
 
   const openInvitation = async () => {
-  setIsOpen(true);
+    setIsOpen(true);
 
-  try {
-    if (audioRef.current) {
-      audioRef.current.volume = 0.7;
-      audioRef.current.muted = false;
-      await audioRef.current.play();
+    try {
+      if (audioRef.current) {
+        audioRef.current.volume = 0.7;
+        audioRef.current.muted = false;
+        await audioRef.current.play();
+      }
+    } catch (error) {
+      console.log("No se pudo reproducir el audio:", error);
     }
-  } catch (error) {
-    console.log("No se pudo reproducir el audio:", error);
-  }
-};
+  };
 
-const toggleMute = () => {
-  if (audioRef.current) {
-    audioRef.current.muted = !audioRef.current.muted;
-    setIsMuted(audioRef.current.muted);
-  }
-};
+  const toggleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !audioRef.current.muted;
+      setIsMuted(audioRef.current.muted);
+    }
+  };
 
   const mapUrl = "https://maps.app.goo.gl/RbmLME3SmLiaZjWu7";
   const whatsappRsvpUrl =
@@ -121,11 +121,9 @@ const toggleMute = () => {
             </div>
           </section>
 
-          <div className="music-player">
-            <audio loop ref={audioRef} className="hidden-audio">
-  <source src="/perfect.mp3" type="audio/mpeg" />
-</audio>
-          </div>
+          <audio loop ref={audioRef} className="hidden-audio">
+            <source src="/perfect.mp3" type="audio/mpeg" />
+          </audio>
 
           <section className="rsvp">
             <h2>Esperamos contar con tu presencia</h2>
@@ -140,11 +138,12 @@ const toggleMute = () => {
           </section>
         </div>
       </div>
+
+      {isOpen && (
+        <button className="mute-button" onClick={toggleMute}>
+          {isMuted ? "🔇" : "🔊"}
+        </button>
+      )}
     </>
-    {isOpen && (
-  <button className="mute-button" onClick={toggleMute}>
-    {isMuted ? "🔇" : "🔊"}
-  </button>
-)}
   );
 }
